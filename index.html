@@ -16,7 +16,6 @@
     let guesses = 0;
 
     while (repeat === 'Y') {
-      guesses = 0;
       let userNumber = prompt('Guess a number between 1 and 10.');
 
       if (userNumber == null) {
@@ -39,13 +38,12 @@
         }
       }
       guesses++;
-
       repeat = prompt("You guessed it in " + guesses + " guesses!  Do you want to play again? (Enter Y or N)");
+        if (repeat == 'Y'){
+          guesses = 0;
+        }
       }
     } 
-    
-    document.getElementById("text").innerHTML = 'You guessed it in ' + guesses + ' guesses! ' + randomNumber + ' was my number!';
-    console.log('You guessed it in ' + guesses + ' guesses! ' + randomNumber + ' was my number!');
 
   </script>
 </body>
