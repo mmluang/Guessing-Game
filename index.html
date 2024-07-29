@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Melanie">
+  <title>Guessing Game</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <p id="text"></p>
+
+  <script>
+    let repeat = 'Y'
+    let guesses = 0;
+
+    while (repeat === 'Y') {
+      let userNumber = prompt('Guess a Number between 1 and 10.');
+
+      if (userNumber == null) {
+        break;
+      } else {
+        userNumber = parseInt(userNumber);
+        randomNumber = Math.floor(Math.random() * 10) + 1;
+      }
+
+      while (userNumber != randomNumber) {
+        if (userNumber == randomNumber) {
+          break;
+        } else if (userNumber > randomNumber) {
+          userNumber = prompt("Your guess was too high, guess again.");
+          guesses++;
+
+        } else if (userNumber < randomNumber) {
+          userNumber = prompt("Your guess was too low, guess again.");
+          guesses++;
+        }
+      }
+      guesses++;
+
+      repeat = prompt("You guessed it in " + guesses + " guesses!  Do you want to play again? (Enter Y or N)");
+      if (repeat == 'Y') {
+        guesses = 0;
+      }
+    }  
+    document.getElementById("text").innerHTML = 'You guessed it in ' + guesses + ' guesses! ' + randomNumber + ' was my number!';
+    console.log('You guessed it in ' + guesses + ' guesses! ' + randomNumber + ' was my number!');
+
+  </script>
+</body>
+  
+</html>
